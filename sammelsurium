@@ -1,0 +1,64 @@
+/* custom-css */
+.wf-status-1{
+
+    fill: @yellow300;
+    stroke: @navbar-bg; stroke-width:2px;
+}
+
+.wf-status-2{
+
+  fill: @blue600;
+  stroke: @navbar-bg; stroke-width:2px;
+}
+
+.wf-status-3{
+
+  fill: @red400;
+  stroke: @navbar-bg; stroke-width:2px;
+}
+
+.wf-status-4{
+
+  fill: @green400;
+  stroke: @navbar-bg; stroke-width:2px;
+}
+
+.wf-status-5{
+
+  fill: @blue500;
+  stroke: @navbar-bg; stroke-width:2px;
+}
+
+.wf-status-6{
+
+  fill: @silver500;
+  stroke: @navbar-bg; stroke-width:2px;
+}
+
+.wf-status-7{
+
+  fill: @red500;
+  stroke: @navbar-bg; stroke-width:2px;
+}
+
+.wf-active{
+
+  fill: @red500;
+  stroke: @red500; stroke-width:1px;
+}
+.sline-b{
+
+  fill: none;
+  stroke: @silver300; stroke-width:1px;
+}
+
+    <tr ng-repeat="row in rows" ><!-- stueckzahlen -->
+
+            <td >{{stk.DATUM}}</td>
+            <td class="text-right">{{row.SOLL|number:2}}</td>
+            <td class="text-right" >{{row.IST|number:2}}</td>
+            <td class="text-right" > <span ng-bind-html="row.IST|filter_svgbar"></span></td>
+            <td  class="text-right">{{(row.IST-row.SOLL)|number:2}}</td>
+            <td  class="text-right">{{(row.IST-row.SOLL)/row.SOLL*100|number:2}}</td>
+    </tr>
+          
