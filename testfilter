@@ -10,7 +10,7 @@
 * ----------------------
 * Version 0.1
 * 2015-02-02
-* steffen.wolf1(at)volkswagen.de
+* 
 * description historie der Wertentwicklung SOLL-IST Abweichung von Kennzahlen (BUD/ACT) (SOLL/IST)
 * usage...<td|span><span ng-bind-html="row.field|filter_svgsparkline"></span></td|span>
 * class wf-active oder wf-done
@@ -45,7 +45,7 @@
 * ----------------------
 * Version 0.1
 * 2015-02-02
-* steffen.wolf1(at)volkswagen.de
+* 
 * description historie der Wertentwicklung relative poistive/negative Abweichung von Kennzahlen (BUD/ACT) (SOLL/IST)
 * usage...<td|span><span ng-bind-html="row.field|filter_svgmiddlespark"></span></td|span>
 * class wf-active oder wf-done linie
