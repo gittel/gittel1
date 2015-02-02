@@ -1,0 +1,93 @@
+
+/**
+* -------------------------------------------------------------------------------------
+* SVG Sparkline
+*
+*     #
+*   # #
+* # # # #
+* # # # #
+* ----------------------
+* Version 0.1
+* 2015-02-02
+* steffen.wolf1(at)volkswagen.de
+* description historie der Wertentwicklung SOLL-IST Abweichung von Kennzahlen (BUD/ACT) (SOLL/IST)
+* usage...<td|span><span ng-bind-html="row.field|filter_svgsparkline"></span></td|span>
+* class wf-active oder wf-done
+* --------------------------------------------------------------------------------------
+*/
+.filter('filter_svgsparkline', function($sce){
+
+  return function(input){
+
+    var _svg ='',_input=input || [23,13,13,10];
+
+    _svg += '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="35">';
+
+    _svg += ( _input ).reduce( function ( total, elem, index) { return total + '<rect class="wf_active" y="'+ ( 35 - elem ) + '" x="'+ index*5 +'" width="4" height="' + elem + '"></rect>\n';}, '' );
+
+    _svg += '</svg>';
+
+    return $sce.trustAsHtml(_svg);
+
+  };
+})
+
+/**
+* -------------------------------------------------------------------------------------
+* SVG Middleline
+*
+*      #
+*   #  #    #
+* ----------------------
+* #  #  # #
+* #     #
+* ----------------------
+* Version 0.1
+* 2015-02-02
+* steffen.wolf1(at)volkswagen.de
+* description historie der Wertentwicklung relative poistive/negative Abweichung von Kennzahlen (BUD/ACT) (SOLL/IST)
+* usage...<td|span><span ng-bind-html="row.field|filter_svgmiddlespark"></span></td|span>
+* class wf-active oder wf-done linie
+* --------------------------------------------------------------------------------------
+*/
+.filter('filter_svgmiddlespark', function($sce){
+
+  return function(input){
+    var _svg ='', _input = input || [2,-3,3,-3,0,1];
+    console.log( _input);
+
+    _svg += '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="30">';
+    _svg += '<line x1="0" y1="13" y2="13" x2="50" class="sline-b"></line>';
+
+    //    if elem >= 0 y=12      height=elem wf-active
+    //    if elem < 0  y=12-elem height=elem wf-done
+
+    _svg += ( _input )
+            .reduce( function ( total, elem, index) {
+
+                var _rect='<rect width="4" height="' + Math.abs(elem) + '" x="' + index*6 + '" ';
+
+                if ( elem < 0 ) {
+
+                    _rect += 'y="' + 13 + '" class="wf-done" ';
+
+                }else {
+
+                    _rect += 'y="' + (13 - elem) + '" class="wf-active" ';
+
+                }
+
+                _rect += '></rect>';
+                console.log(index + '_RECT ' + _rect );
+                return total + _rect;
+
+
+              },'');
+
+    _svg += '</svg>';
+
+    return $sce.trustAsHtml(_svg);
+
+  };
+})
