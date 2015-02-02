@@ -62,3 +62,9 @@
             <td  class="text-right">{{(row.IST-row.SOLL)/row.SOLL*100|number:2}}</td>
     </tr>
           
+<div class="pull-right "><!--ul nav nav-list active disabled -->
+  <a href="#/{{seite}}_l" ><span class="wag-view-list"></span></a>
+  <a href="#/{{seite}}_m" ><span class="wag-view-grid"></span></a>
+  <!-- <svg-maplist></svg-maplist> -->
+</div>
+
